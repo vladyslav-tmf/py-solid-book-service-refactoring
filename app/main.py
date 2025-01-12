@@ -1,11 +1,9 @@
-from app.operations import (
-    ConsoleDisplay,
-    ConsolePrint,
-    JsonSerializer,
-    ReverseDisplay,
-    ReversePrint,
-    XmlSerializer,
-)
+from app.display.console import ConsoleDisplay
+from app.display.reverse import ReverseDisplay
+from app.print.console import ConsolePrint
+from app.print.reverse import ReversePrint
+from app.serialize.json import JsonSerializer
+from app.serialize.xml import XmlSerializer
 
 
 class Book:
@@ -54,6 +52,7 @@ class Book:
 
 
 def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
+    """Execute a series of commands on the book."""
     for cmd, method_type in commands:
         if cmd == "display":
             book.display(method_type)
